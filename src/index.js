@@ -20,8 +20,12 @@ function changeCityName(event) {
   event.preventDefault();
   let cityInput = document.querySelector("#city-input");
   let cityTrimmed = cityInput.value.trim();
-  let city =
-    cityTrimmed.charAt(0).toUpperCase() + cityTrimmed.slice(1).toLowerCase();
+  let city = cityTrimmed
+    .toLowerCase()
+    .split(" ")
+    .filter((word) => word !== "") // removes extra spaces between words
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
   let cityNew = document.querySelector("h1");
   cityNew.innerHTML = city;
   let apiKey = "5d1t76143df0603191aa4604b0b5b1oe";
