@@ -2,6 +2,19 @@ function changeTemp(response) {
   let temp = Math.round(response.data.temperature.current);
   let newTemp = document.querySelector("#current-temp");
   newTemp.innerHTML = temp;
+  let description = response.data.condition.description;
+  let newDescription = document.querySelector("#description");
+  newDescription.innerHTML = description;
+  let humidity = response.data.temperature.humidity;
+  let newHumidity = document.querySelector("#current-humidity");
+  newHumidity.innerHTML = `<strong>${humidity}%</strong>`;
+  let windSpeed = Math.round(response.data.wind.speed);
+  console.log(windSpeed);
+  let newWindSpeed = document.querySelector("#current-wind");
+  newWindSpeed.innerHTML = `<strong>${windSpeed} km/h</strong>`;
+  // let weatherIcon = response.data.condition.icon_url;
+  // let newWeatheIcon = document.querySelector("#weather-icon");
+  // newWeatheIcon.innerHTML = `<img src="${weatherIcon}" alt="icon" />`;
 }
 function changeCityName(event) {
   event.preventDefault();
